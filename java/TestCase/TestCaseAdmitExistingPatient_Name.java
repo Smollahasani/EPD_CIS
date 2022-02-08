@@ -25,7 +25,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
-public class TestCaseAdmitExistingPatient {
+public class TestCaseAdmitExistingPatient_Name {
 	element_Highlight eh= new element_Highlight();
     WebDriver driver;
 
@@ -56,9 +56,10 @@ public class TestCaseAdmitExistingPatient {
 
 	  Thread.sleep(6000);
 	  
-	  //AdmitExisingtPatientWithElectronicNumber
+	  //AdmitExisingtPatientWithName&Family
 	  PageObject_Admit admit =PageFactory.initElements(driver, PageObject_Admit.class);
-	  admit.Admit_Exisingt_Patient_ElectronicNumber(driver, electronicNumber);
+      Thread.sleep(1000);
+      admit.Admit_Exisingt_Patient_Name(driver, name, familyName);
       Thread.sleep(1000);
 	  admit.Admit_Data(driver, clinic,trapist, assistant, shift, model);
       Thread.sleep(500);
@@ -74,14 +75,14 @@ public class TestCaseAdmitExistingPatient {
 	 
 	   //CheckAdmit
 	  PageObject_AdmitList serchectronicNumbe =PageFactory.initElements(driver, PageObject_AdmitList.class);
-	  serchectronicNumbe.Search_Admit_ElectronicNumber(driver, electronicNumber);
+	  serchectronicNumbe.Search_Admit_FamilyName(driver, familyName);
 	  
-      WebElement GridelectronicNumbe=  driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-admit-list/div/div[3]/div/kendo-grid/div/kendo-grid-list/div/div[1]/table/tbody/tr[1]/td[4]"));
+      WebElement GrideLastName=  driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-admit-list/div/div[3]/div/kendo-grid/div/kendo-grid-list/div/div[1]/table/tbody/tr[1]/td[8]"));
       Thread.sleep(2000);
-      eh.highlightElement(driver, GridelectronicNumbe);
-      String w = GridelectronicNumbe.getText();
+      eh.highlightElement(driver, GrideLastName);
+      String w = GrideLastName.getText();
       System.out.print("resulte:"+ w);
-      Assert.assertEquals(electronicNumber, w);
+      Assert.assertEquals(familyName, w);
       Thread.sleep(2000);
 
 

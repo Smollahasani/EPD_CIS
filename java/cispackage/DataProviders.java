@@ -39,9 +39,22 @@ public class DataProviders {
 	}
 	
 	@DataProvider(name = "AdmitData")
-	public Iterator<Object[]> AdmitExistingPatientElectronicNumber() throws IOException{
+	public Iterator<Object[]> AdmitData() throws IOException{
 		CSVReader reader = new CSVReader(
 				new FileReader("C:\\Users\\s.mollahasani\\EPD\\CIS\\src\\test\\resources\\data\\CSVFile\\AdmitData.csv"),',','\'',1);
+		List<Object[]> myEntries = new ArrayList<Object[]>();
+		String[] nextLine;
+		while ((nextLine=reader.readNext())!=null) {
+			myEntries.add(nextLine);
+		}
+		reader.close();
+		return myEntries.iterator();
+	}
+	
+	@DataProvider(name = "AddPationesPersianInAdmit")
+	public Iterator<Object[]> AddPationesPersianInAdmit () throws IOException{
+		CSVReader reader = new CSVReader(
+				new FileReader("C:\\Users\\s.mollahasani\\EPD\\CIS\\src\\test\\resources\\data\\CSVFile\\AddPationesPersian&Admit.csv"),',','\'',1);
 		List<Object[]> myEntries = new ArrayList<Object[]>();
 		String[] nextLine;
 		while ((nextLine=reader.readNext())!=null) {

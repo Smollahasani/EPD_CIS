@@ -27,7 +27,7 @@ public class PageObject_Landing {
 	   eh.highlightElement(driver,CIS);
 	   Thread.sleep(1000);
 	   CIS.click();
-	   Thread.sleep(5000);
+	   Thread.sleep(10000);
 
 	   
 	   

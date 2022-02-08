@@ -134,7 +134,7 @@ public class PageObject_AddPatient {
 			  upload_file.sendKeys(Avatar);
 			  //upload_file.sendKeys("C:/Users/s.mollahasani/Desktop/CIS/mr2.png");
 			  
-              //jensiat
+              //sex
 			  eh.highlightElement(driver, sex);
 			  Thread.sleep(500);
 			  action.click(sex).perform();

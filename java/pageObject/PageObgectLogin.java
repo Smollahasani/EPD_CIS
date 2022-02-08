@@ -26,13 +26,6 @@ public class PageObgectLogin {
 	WebElement loginbutton;
     
     
-//    public PageObgectLogin(WebDriver driver ,String URL , String UserName , String Password)
-//    {
-//    	driver.get(URL);
-//    	//driver.get("http://79.175.176.91:4014");
-// 	    driver.manage().window().maximize();
-//
-//    }
 
     public void login( WebDriver driver,String URL, String UserName , String Password) throws InterruptedException {
     	
@@ -59,6 +52,8 @@ public class PageObgectLogin {
     	eh.highlightElement(driver, loginbutton);
 		loginbutton.click();
 		eh.unhighlightLast(driver, loginbutton);
+	    Thread.sleep(3000);
+
 
 	}
 
