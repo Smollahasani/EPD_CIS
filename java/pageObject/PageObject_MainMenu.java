@@ -1,5 +1,6 @@
 package pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +25,11 @@ public class PageObject_MainMenu {
 	   WebElement Admit_list;
 	   
 	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/a/span")
+	   WebElement system_config;
+	   
+	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/ul/li[4]/a/span")
 	   WebElement system_variable;
+
 
 
 
@@ -38,8 +43,7 @@ public class PageObject_MainMenu {
 	    Thread.sleep(500);
 	   }
 	   
-	   public void list_patient_menu (WebDriver driver) throws Throwable
-	   {
+	   public void list_patient_menu (WebDriver driver) throws Throwable   {
 	   eh.highlightElement(driver,main_menu);
 	    main_menu.click();
 	    Thread.sleep(1000);
@@ -47,14 +51,25 @@ public class PageObject_MainMenu {
 	    list_patient.click();
 	    Thread.sleep(500);   
 }	   
-	   public void Admit_List_menu (WebDriver driver) throws Throwable
-	   {
+	   public void Admit_List_menu (WebDriver driver) throws Throwable   {
 	   eh.highlightElement(driver,main_menu);
 	    main_menu.click();
 	    Thread.sleep(1000);
 	    eh.highlightElement(driver,Admit_list);
 	    Admit_list.click();
 	    Thread.sleep(500);   
+}	   
+	   public void system_variable_menu (WebDriver driver) throws Throwable   {
+	   eh.highlightElement(driver,main_menu);
+	    main_menu.click();
+	    Thread.sleep(1000);
+	    eh.highlightElement(driver,system_config);
+	    system_config.click();
+	    Thread.sleep(500); 
+	    WebElement system_variable =driver.findElement(By.xpath"/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/a/span");
+	    eh.highlightElement(driver,system_variable);
+	    system_variable.click();
+	    Thread.sleep(500);  
 }	   
 
 	   
