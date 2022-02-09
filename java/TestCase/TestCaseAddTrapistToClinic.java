@@ -23,7 +23,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
-public class TestCaseAddPatient {
+public class TestCaseAddTrapistToClinic {
       String nationalCode;
 
       
@@ -32,16 +32,39 @@ public class TestCaseAddPatient {
 
 
   @Test()
-  public void f() throws Throwable {
+  public void f(String URL ,String UserName ,String Password ,String Name ,String Family ,String Father
+		  ,String Avatar,String Sex ,String TAHOL ,String BIRTHDATE ,String Mahaltavalod 
+		  ,String City ,String Adress ,Strg Email ,String BIME ,String SANDOGH ,String BIMEDATE ,String NESBAT,String Meliat,String OLDID) throws Throwable {
 	 
+	  driver.navigate().to(URL);
+	  driver.manage().window().maximize();
 
 
 	  
-
-  }
+	  //Login
+	  PageObgectLogin admLoginPage = 
+				PageFactory.initElements(driver, PageObgectLogin.class);
+		admLoginPage.login(driver, URL ,UserName , Password);
+		
+		//Landing
+		PageObject_Landing Icon = PageFactory.initElements(driver, PageObject_Landing.class);
+		Icon.CIS_Icon(driver);
+		
+		  	  System.out.println(driver.getCurrentUrl());
+	  for(String window : driver.getWindowHandles() ) {
+		  driver.switchTo().window(window);
+	  }
+	   //EnterToAddPatientPage
+	  PageObject_MainMenu menu = PageFactory.initElements(driver, PageObject_MainMenu.class);
+	  menu.add_patient_menu(driver);
+	  Thread.sleep(3000);
+	 for(String window : driver.getWindowHandles() ) {
+	  driver.switchTo().window(window);
+	  }
+	   }
   @BeforeMethod
   public void beforeMethod() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\Samane\\seleniumWebDriver3\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\s.mollahasani\\webdriver\\chromedriver.exe");
 	  driver = new ChromeDriver();
       driver.get("http://mellicode.azmads.com/Home/");
 	  WebElement Code = driver.findElement(By.xpath("/html/body/div[2]/div[1]/h2[2]"));

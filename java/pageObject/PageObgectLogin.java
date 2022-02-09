@@ -34,12 +34,10 @@ public class PageObgectLogin {
     	
         eh.highlightElement(driver, userName);
 		userName.sendKeys(UserName);
-		//userName.sendKeys("0538902388");
 		eh.unhighlightLast(driver, userName);
 		
     	eh.highlightElement(driver, password);
     	password.sendKeys(Password);
-		//password.sendKeys("b2u72aG4");
 		eh.unhighlightLast(driver, password);
 
 		
