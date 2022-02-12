@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import cispackage.DataProviders;
 import cispackage.element_Highlight;
 import pageObject.PageObgectLogin;
+import pageObject.PageObgect_AddTrapistToClinic;
 import pageObject.PageObject_AddPatient;
 import pageObject.PageObject_Landing;
 import pageObject.PageObject_ListPatient;
@@ -31,10 +32,10 @@ public class TestCaseAddTrapistToClinic {
 	element_Highlight eh= new element_Highlight();
 
 
-  @Test()
+  @Test(dataProvider="AddPationesPersian",dataProviderClass=DataProviders.class)
   public void f(String URL ,String UserName ,String Password ,String Name ,String Family ,String Father
 		  ,String Avatar,String Sex ,String TAHOL ,String BIRTHDATE ,String Mahaltavalod 
-		  ,String City ,String Adress ,Strg Email ,String BIME ,String SANDOGH ,String BIMEDATE ,String NESBAT,String Meliat,String OLDID) throws Throwable {
+		  ,String City ,String Adress ,String Email ,String BIME ,String SANDOGH ,String BIMEDATE ,String NESBAT,String Meliat,String OLDID) throws Throwable {
 	 
 	  driver.navigate().to(URL);
 	  driver.manage().window().maximize();
@@ -54,13 +55,18 @@ public class TestCaseAddTrapistToClinic {
 	  for(String window : driver.getWindowHandles() ) {
 		  driver.switchTo().window(window);
 	  }
-	   //EnterToAddPatientPage
+	   //EnterToAddTrapistToClinicPage
 	  PageObject_MainMenu menu = PageFactory.initElements(driver, PageObject_MainMenu.class);
-	  menu.add_patient_menu(driver);
+	  menu.system_variable_menu(driver);
+	  Thread.sleep(500);
+	  menu.system_variable_add_trapist_clinic(driver);
 	  Thread.sleep(3000);
 	 for(String window : driver.getWindowHandles() ) {
 	  driver.switchTo().window(window);
 	  }
+	   //AddTrapistToClinic
+	 PageObgect_AddTrapistToClinic addTrapistToClinic = PageFactory.initElements(driver, PageObgect_AddTrapistToClinic.class);
+	 addTrapistToClinic.AddPatientToClinic(driver);
 	   }
   @BeforeMethod
   public void beforeMethod() throws InterruptedException {
@@ -77,7 +83,7 @@ public class TestCaseAddTrapistToClinic {
   }
 	   @AfterMethod
   public void afterMethod() {
-		driver.quit();
+	//	driver.quit();
 	  
   }
 

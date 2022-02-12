@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import cispackage.element_Highlight;
 
-public class PageObgectAddTrapistToClinic{
+public class PageObgect_AddTrapistToClinic{
 	
 
 	element_Highlight eh= new element_Highlight();
@@ -65,34 +65,40 @@ public class PageObgectAddTrapistToClinic{
     	eh.highlightElement(driver, clinicCheckbox);
     	action.click(clinicCheckbox).perform();
 		eh.unhighlightLast(driver, clinicCheckbox);
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		//choose trapist
 		eh.highlightElement(driver, searchtBtton);
 		action.click(searchtBtton).perform();
 		eh.unhighlightLast(driver, searchtBtton);
     	eh.highlightElement(driver, trapistName);
+		Thread.sleep(1000);
     	TrapistName= trapistName.getText();
 		eh.unhighlightLast(driver, trapistName);
     	eh.highlightElement(driver, trapistCheckbox);
     	action.click(trapistCheckbox).perform();
 		eh.unhighlightLast(driver, trapistCheckbox);
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		//sabt
     	eh.highlightElement(driver, sabtBtton);
     	sabtBtton.click();
+	    eh.unhighlightLast(driver, sabtBtton);
 	    //SuccecfulAddMessage
 	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
 	    Thread.sleep(1000);
 	    String c= POPUP.getText();
 	    System.out.print("resulte:"+ c);
-	    Assert.assertEquals(c, "Ù¾Ø±ÙˆÙ†Ø¯Ù‡ Ø¨ÛŒÙ…Ø§Ø± Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø«Ø¨Øª Ø´Ø¯.\n"
-	     		+ "x");
+	    Assert.assertEquals(c, "ثبت با موفقیت انجام شد\r\n"
+	    		+ "x");
+	    eh.unhighlightLast(driver, POPUP);
+
 	    
 	    //check sabt
     	action.click(clinicCheckbox).perform();
-		Thread.sleep(500);
+		Thread.sleep(1000);
         WebElement addedTrtapist=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div/span"));
+	    eh.highlightElement(driver, addedTrtapist);
+		Thread.sleep(1000);
         TrapistNameAdded=addedTrtapist.getText();
         Assert.assertEquals(TrapistNameAdded, TrapistName);
 
