@@ -87,8 +87,8 @@ public class PageObgect_AddTrapistToClinic{
 	    eh.highlightElement(driver, POPUP);
 	    Thread.sleep(1000);
 	    String c= POPUP.getText();
-	    System.out.print("resulte:"+ c);
-	    Assert.assertEquals(c, "ثبت با موفقیت انجام شد\r\n"
+	    System.out.print("resulte:"+c);
+	    Assert.assertEquals(c,"ثبت با موفقیت انجام شد\n"
 	    		+ "x");
 	    eh.unhighlightLast(driver, POPUP);
 
@@ -100,8 +100,7 @@ public class PageObgect_AddTrapistToClinic{
 	    eh.highlightElement(driver, addedTrtapist);
 		Thread.sleep(1000);
         TrapistNameAdded=addedTrtapist.getText();
-        Assert.assertEquals(TrapistNameAdded, TrapistName);
-
+        Assert.assertTrue(TrapistNameAdded.contains(TrapistName));
 	}
 
 }

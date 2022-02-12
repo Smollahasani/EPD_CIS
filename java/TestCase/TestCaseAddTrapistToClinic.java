@@ -32,10 +32,8 @@ public class TestCaseAddTrapistToClinic {
 	element_Highlight eh= new element_Highlight();
 
 
-  @Test(dataProvider="AddPationesPersian",dataProviderClass=DataProviders.class)
-  public void f(String URL ,String UserName ,String Password ,String Name ,String Family ,String Father
-		  ,String Avatar,String Sex ,String TAHOL ,String BIRTHDATE ,String Mahaltavalod 
-		  ,String City ,String Adress ,String Email ,String BIME ,String SANDOGH ,String BIMEDATE ,String NESBAT,String Meliat,String OLDID) throws Throwable {
+  @Test(dataProvider="Login",dataProviderClass=DataProviders.class)
+  public void f(String URL ,String UserName ,String Password) throws Throwable {
 	 
 	  driver.navigate().to(URL);
 	  driver.manage().window().maximize();
@@ -68,6 +66,7 @@ public class TestCaseAddTrapistToClinic {
 	 PageObgect_AddTrapistToClinic addTrapistToClinic = PageFactory.initElements(driver, PageObgect_AddTrapistToClinic.class);
 	 addTrapistToClinic.AddPatientToClinic(driver);
 	   }
+  
   @BeforeMethod
   public void beforeMethod() throws InterruptedException {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\s.mollahasani\\webdriver\\chromedriver.exe");

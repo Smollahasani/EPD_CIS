@@ -12,6 +12,22 @@ import org.testng.annotations.DataProvider;
 import com.opencsv.CSVReader;
 
 public class DataProviders {
+	
+	@DataProvider(name = "Login")
+	public Iterator<Object[]> Login () throws IOException{
+		CSVReader reader = new CSVReader(
+				new FileReader("C:\\Users\\s.mollahasani\\EPD\\CIS\\src\\test\\resources\\data\\CSVFile\\Login.csv"),',','\'',1);
+		List<Object[]> myEntries = new ArrayList<Object[]>();
+		String[] nextLine;
+		while ((nextLine=reader.readNext())!=null) {
+			myEntries.add(nextLine);
+		}
+		reader.close();
+		return myEntries.iterator();
+	}
+	
+	
+	
 	@DataProvider(name = "AddPationesPersian")
 	public Iterator<Object[]> AddPationesPersian() throws IOException{
 		CSVReader reader = new CSVReader(
