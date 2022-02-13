@@ -24,7 +24,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
-public class TestCaseAddTrapistToClinic {
+public class TestCaseSearch_AddTrapistToClinic {
       String nationalCode;
 
       
@@ -62,12 +62,16 @@ public class TestCaseAddTrapistToClinic {
 	 for(String window : driver.getWindowHandles() ) {
 	  driver.switchTo().window(window);
 	  }
-	   //AddTrapistToClinic
-	 PageObgect_AddTrapistToClinic addTrapistToClinic = PageFactory.initElements(driver, PageObgect_AddTrapistToClinic.class);
-	 addTrapistToClinic.AddTrapistToClinic(driver);
+	   //search Trapist & Trapist Code
+	 PageObgect_AddTrapistToClinic searchTrapist = PageFactory.initElements(driver, PageObgect_AddTrapistToClinic.class);
+	 searchTrapist.Search_three_letter(driver);
+	  Thread.sleep(500);
+	 searchTrapist.Search_trapist_code(driver);
+
 	   }
   
   @BeforeMethod
+  
   public void beforeMethod() throws InterruptedException {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\s.mollahasani\\webdriver\\chromedriver.exe");
 	  driver = new ChromeDriver();

@@ -18,6 +18,10 @@ public class PageObgect_AddTrapistToClinic{
 	String  ClinicNameAdded;
 	String  TrapistName;
 	String  TrapistNameAdded;
+	String  TrapistFirstName;
+	String  TrapistLastName;
+	String  TrapistCode;
+	String  TrapistCodeWithTitle;
 
 
 
@@ -40,9 +44,12 @@ public class PageObgect_AddTrapistToClinic{
 	WebElement trapistNameSearch;
     
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[1]/div[2]/div/div[2]/kendo-textbox-container/input")
-	WebElement trapistFamily;
+	WebElement trapistFamilySearch;
     
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[1]/div[2]/div/div[3]/kendo-textbox-container/input")
+	WebElement trapistCodeSearch;
+    
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[2]/div[2]/div/div[1]/div/div[2]/div[2]")
 	WebElement trapistCode;
     
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[2]/div[2]/div/div/div/div[1]/mat-checkbox/label/div")
@@ -53,9 +60,15 @@ public class PageObgect_AddTrapistToClinic{
     
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[1]/div[1]/div/div[1]")
 	WebElement searchtBtton;
+    
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-therapist/div/div/div[3]/app-therapists/div[1]/div[1]/div/div[2]")
+	WebElement refreshTrapist;
 
     
-    public void AddPatientToClinic ( WebDriver driver ) throws InterruptedException {
+
+
+    
+    public void AddTrapistToClinic ( WebDriver driver ) throws InterruptedException {
     	
 		Actions action = new Actions(driver);
     	element_Highlight eh= new element_Highlight();
@@ -102,6 +115,91 @@ public class PageObgect_AddTrapistToClinic{
         TrapistNameAdded=addedTrtapist.getText();
         Assert.assertTrue(TrapistNameAdded.contains(TrapistName));
 	}
+    
+      public void Search_three_letter ( WebDriver driver ) throws InterruptedException {
+  		Actions action = new Actions(driver);
+    	element_Highlight eh= new element_Highlight();
 
+    	 
+    	//get name
+  		eh.highlightElement(driver, searchtBtton);
+  		action.click(searchtBtton).perform();
+  		eh.unhighlightLast(driver, searchtBtton);
+    	eh.highlightElement(driver, trapistName);
+		Thread.sleep(1000);
+    	TrapistName= trapistName.getText();
+		Thread.sleep(500);
+		eh.unhighlightLast(driver, trapistName);
+		action.click(refreshTrapist);
+		
+		 //split trapist name
+		String substrings[] = TrapistName.split(" "); 
+		
+		TrapistFirstName=substrings[0];
+		TrapistLastName=substrings[1];
+		
+   	    //search name
+		String threeN = TrapistFirstName.substring(0, 2);
+		action.click(trapistNameSearch).perform();
+		action.sendKeys(threeN).perform();
+		eh.highlightElement(driver, searchtBtton);
+		action.click(searchtBtton).perform();
+		eh.unhighlightLast(driver, searchtBtton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistName.contains(TrapistFirstName));
+		trapistNameSearch.clear();
+		action.click(refreshTrapist).perform();
+		Thread.sleep(1000);
+
+		
+		//search Family
+		eh.highlightElement(driver, searchtBtton);
+		action.click(searchtBtton).perform();
+		eh.unhighlightLast(driver, searchtBtton);
+		Thread.sleep(1000);
+	    threeN = TrapistLastName.substring(0, 2);
+		action.click(trapistFamilySearch).perform();
+		action.sendKeys(threeN).perform();
+		eh.highlightElement(driver, searchtBtton);
+		action.click(searchtBtton).perform();
+		eh.unhighlightLast(driver, searchtBtton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistName.contains(TrapistLastName));
+		action.click(refreshTrapist).perform();
+
+	
+     } 
+      
+      public void Search_trapist_code ( WebDriver driver ) throws InterruptedException {
+  		Actions action = new Actions(driver);
+    	element_Highlight eh= new element_Highlight();
+    	
+    	//get Code
+  		eh.highlightElement(driver, searchtBtton);
+  		action.click(searchtBtton).perform();
+  		eh.unhighlightLast(driver, searchtBtton);
+    	eh.highlightElement(driver, trapistCode);
+		Thread.sleep(1000);
+    	TrapistCodeWithTitle= trapistCode.getText();
+		eh.unhighlightLast(driver, trapistCode);
+		
+	    //split trapist code
+		String substrings[] = TrapistCodeWithTitle.split(" "); 
+		TrapistCode=substrings[2];
+		
+   	    //search code
+		eh.highlightElement(driver, trapistCodeSearch);
+		action.click(trapistCodeSearch).perform();
+		action.sendKeys(TrapistCode).perform();
+		Thread.sleep(1000);
+		eh.unhighlightLast(driver, trapistCodeSearch);
+		eh.highlightElement(driver, searchtBtton);
+		action.click(searchtBtton).perform();
+		eh.unhighlightLast(driver, searchtBtton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistCodeWithTitle.contains(TrapistCode));
+		trapistNameSearch.clear();
+		  	
+      }
 }
 

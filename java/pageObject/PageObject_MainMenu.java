@@ -27,9 +27,6 @@ public class PageObject_MainMenu {
 	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/a/span")
 	   WebElement system_config;
 	   
-//	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/ul/li[4]/a/span")
-//	   WebElement system_variable;
-
 
 
 
