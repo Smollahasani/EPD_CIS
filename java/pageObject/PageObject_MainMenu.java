@@ -15,6 +15,9 @@ public class PageObject_MainMenu {
 	   @FindBy(className="menu-btn")
 	   WebElement main_menu;
 	   
+	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[1]/a/span")
+	   WebElement Admit;
+	   
 	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[4]/a/span")
 	   WebElement add_patient;
 	   
@@ -27,6 +30,16 @@ public class PageObject_MainMenu {
 	   @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-menu/nav/ul/li[8]/a/span")
 	   WebElement system_config;
 	   
+
+	    public void admit ( WebDriver driver) throws InterruptedException {
+	 	   
+	    eh.highlightElement(driver,main_menu);
+	    main_menu.click();
+	    Thread.sleep(1000);
+	    eh.highlightElement(driver,Admit);
+	    Admit.click();
+	    Thread.sleep(500);
+	   }
 
 
 

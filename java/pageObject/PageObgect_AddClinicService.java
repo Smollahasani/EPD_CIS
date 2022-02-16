@@ -135,21 +135,34 @@ public class PageObgect_AddClinicService{
     	
 		Actions action = new Actions(driver);
     	element_Highlight eh= new element_Highlight();
-    	
+    	//get service name in position 2
     	action.click(clinicCheckbox).perform();
 		Thread.sleep(1000);
         WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
 	    eh.highlightElement(driver, addedService);
         ServiceNameAdded2=addedService2.getText();
-       // action.dragAndDropBy(addedService2, xOffset, yOffset)
+        //move service to position 1
          actions
 		.moveToElement(addedService2)
 		.clickAndHold()
 		.moveByOffset(130, 0)
 		.release()
 		.perform();
+         //sabt changes
+     	eh.highlightElement(driver, sabtButton);
+     	sabtButton.click();
+ 	    eh.unhighlightLast(driver, sabtButton);
+		Thread.sleep(1000);
+ 	   //check Priority 
+    	action.click(clinicCheckbox).perform();
+		Thread.sleep(1000);
+        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]/span"));
+	    eh.highlightElement(driver, addedService);
+        ServiceNameAdded=addedService.getText();
+        Assert.assertEquals(ServiceNameAdded2, ServiceNameAdded);
+        return ServiceNameAdded2;
 
-    	
+  	
     }
       
 }

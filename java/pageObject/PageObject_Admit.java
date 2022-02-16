@@ -14,6 +14,9 @@ import cispackage.element_Highlight;
 public class PageObject_Admit {
 	
 	  element_Highlight eh= new element_Highlight();
+	  
+	  
+	  String positionServic;
 
       WebDriver driver;
 
@@ -255,7 +258,7 @@ public class PageObject_Admit {
 		      Thread.sleep(1000);
 		      String c= driver.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container")).getText();
 		      System.out.print("resulte:"+ c);
-		      Assert.assertEquals(c, "پذیرش بیمار با موفقیت ثبت شد.\n"
+		      Assert.assertEquals(c, "Ù¾Ø°ÛŒØ±Ø´ Ø¨ÛŒÙ…Ø§Ø± Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø«Ø¨Øª Ø´Ø¯.\n"
 		      		+ "x");
 		      Thread.sleep(1000);
 	
@@ -423,10 +426,32 @@ public class PageObject_Admit {
   	      Thread.sleep(1000);
   	      String c= POPUP.getText();
   	      System.out.print("resulte:"+ c);
-  	      Assert.assertEquals(c, "پرونده بیمار با موفقیت ثبت شد.\n"
+  	      Assert.assertEquals(c, "Ù¾Ø±ÙˆÙ†Ø¯Ù‡ Ø¨ÛŒÙ…Ø§Ø± Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø«Ø¨Øª Ø´Ø¯.\n"
   	      		+ "x");
         	    } 
-
+        public void firstClinicService () throws InterruptedException {
+       	
+			 Actions action = new Actions(driver);
+			 
+			 action.click(Clinic).perform();
+			 Thread.sleep(500);
+			 action
+			 .sendKeys(Keys.DOWN)
+			 .sendKeys(Keys.ENTER)
+			 .perform();
+			 Thread.sleep(500);
+			 action.click(Trapist).perform();
+			 action
+			 .sendKeys(Keys.DOWN)
+			 .sendKeys(Keys.ENTER)
+			 .perform();
+			 Thread.sleep(2000);
+			 WebElement position1 = driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-admit/div/div[2]/div[1]/div[2]/div/div/div[2]/app-admit-service-search/div/div/div/div[2]/kendo-grid/div/kendo-grid-list/div/div[1]/table/tbody/tr[1]/td[1]"));
+			 positionServic=position1.getText(); 
+			 return positionServic;
+			
+	
+        }
         
 }
 
