@@ -53,6 +53,12 @@ public class PageObgect_AddClinicService{
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[1]/div/div/div")
 	WebElement refreshButton;
 
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]/span")
+	WebElement addedService;
+
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span")
+	WebElement addedService2;
+
     
 
     
@@ -105,10 +111,10 @@ public class PageObgect_AddClinicService{
 	    //SuccecfulAddMessage
 	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
-	    Thread.sleep(1000);
+	    Thread.sleep(500);
 	    String c= POPUP.getText();
 	    System.out.print("resulte:"+c);
-	    Assert.assertEquals(c,"Ø«Ø¨Øª Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø§Ù†Ø¬Ø§Ù… Ø´Ø¯\n"
+	    Assert.assertEquals(c,"ثبت با موفقیت انجام شد\n"
 	    		+ "x");
 	    eh.unhighlightLast(driver, POPUP);
 
@@ -116,17 +122,17 @@ public class PageObgect_AddClinicService{
 	    //check sabt service
     	action.click(clinicCheckbox).perform();
 		Thread.sleep(1000);
-        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div/span"));
+        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]/span"));
 	    eh.highlightElement(driver, addedService);
 		Thread.sleep(1000);
         ServiceNameAdded=addedService.getText();
         Assert.assertTrue(ServiceNameAdded.contains(ServiceName));
 	    //check sabt service2
 		Thread.sleep(1000);
-        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
-	    eh.highlightElement(driver, addedService);
+        WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
+	    eh.highlightElement(driver, addedService2);
 		Thread.sleep(1000);
-        ServiceNameAdded2=addedService.getText();
+        ServiceNameAdded2=addedService2.getText();
         Assert.assertTrue(ServiceNameAdded2.contains(ServiceName2));
         action.click(refreshButton).perform();
 	}
@@ -139,15 +145,16 @@ public class PageObgect_AddClinicService{
     	action.click(clinicCheckbox).perform();
 		Thread.sleep(1000);
         WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
-	    eh.highlightElement(driver, addedService);
+	    eh.highlightElement(driver, addedService2);
         ServiceNameAdded2=addedService2.getText();
         //move service to position 1
-         actions
-		.moveToElement(addedService2)
-		.clickAndHold()
-		.moveByOffset(130, 0)
+        System.out.println("location x:" + addedService.getLocation().getX() + "location y:" + addedService.getLocation().getY());
+        action
+		.clickAndHold(addedService2)
+		.moveToElement(refreshButton)
 		.release()
 		.perform();
+ 	    Thread.sleep(5000);
          //sabt changes
      	eh.highlightElement(driver, sabtButton);
      	sabtButton.click();
@@ -160,7 +167,6 @@ public class PageObgect_AddClinicService{
 	    eh.highlightElement(driver, addedService);
         ServiceNameAdded=addedService.getText();
         Assert.assertEquals(ServiceNameAdded2, ServiceNameAdded);
-        return ServiceNameAdded2;
 
   	
     }
