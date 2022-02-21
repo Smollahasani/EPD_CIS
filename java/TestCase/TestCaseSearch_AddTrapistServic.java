@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import cispackage.DataProviders;
 import cispackage.element_Highlight;
 import pageObject.PageObgectLogin;
+import pageObject.PageObgect_AddTrapistService;
 import pageObject.PageObgect_AddTrapistToClinic;
 import pageObject.PageObject_AddPatient;
 import pageObject.PageObject_Landing;

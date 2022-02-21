@@ -125,7 +125,7 @@ public class PageObject_AddTrapistAssistsnt{
 
 		//choose $ get Assistsnt
 		AssistantName= assistantName.getText();
-    	eh.highlightElement(driver, serviceCheckbox);
+    	eh.highlightElement(driver, assistantCheckbox);
     	action.click(assistantCheckbox).perform();
 		eh.unhighlightLast(driver, assistantCheckbox);
 		//choose $ get Assistsnt2
@@ -179,18 +179,18 @@ public class PageObject_AddTrapistAssistsnt{
         Assert.assertTrue(AssistantNameAdded.contains(AssistantName));
 	    //check sabt Assistant2
 		Thread.sleep(1000);
-        WebElement addedAssistant=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
+        WebElement addedAssistant2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
 	    eh.highlightElement(driver, addedAssistant);
 		Thread.sleep(1000);
-		AssistantNameAdded2=addedAssistant.getText();
+		AssistantNameAdded2=addedAssistant2.getText();
         Assert.assertTrue(AssistantNameAdded.contains(AssistantName2));
 	    //check sabt Assistant3
-        WebElement addedAssistant=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div/span"));
+        WebElement addedAssistant3=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-clinic-service/div/div/div[2]/app-clinic-single/div/div[2]/div[2]/div/div[1]/div/div/div/div/span"));
 	    eh.highlightElement(driver, addedAssistant);
 		Thread.sleep(1000);
-		AssistantNameAdded3=addedAssistant.getText();
+		AssistantNameAdded3=addedAssistant3.getText();
         Assert.assertTrue(AssistantNameAdded3.contains(AssistantName3));
-        action.click(refreshButton).perform();
+        action.click(assistantRefreshButton).perform();
 	}
     
 

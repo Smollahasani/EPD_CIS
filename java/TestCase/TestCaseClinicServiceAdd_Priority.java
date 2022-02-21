@@ -5,8 +5,10 @@ import org.testng.annotations.Test;
 import cispackage.DataProviders;
 import cispackage.element_Highlight;
 import pageObject.PageObgectLogin;
+import pageObject.PageObgect_AddClinicService;
 import pageObject.PageObgect_AddTrapistToClinic;
 import pageObject.PageObject_AddPatient;
+import pageObject.PageObject_Admit;
 import pageObject.PageObject_Landing;
 import pageObject.PageObject_ListPatient;
 import pageObject.PageObject_MainMenu;
@@ -67,10 +69,9 @@ public class TestCaseClinicServiceAdd_Priority {
 	  Thread.sleep(2000);
 	  //priority in ClinicService page
 	 priority.ClinicServicePriority(driver);
-	 return ServiceNameAdded2;
 
 	  //go to Admit page
-	 menu.Admit(driver);
+	 menu.admit(driver);
 	  Thread.sleep(3000);
 	 for(String window : driver.getWindowHandles() ) {
 	  driver.switchTo().window(window);
@@ -80,7 +81,6 @@ public class TestCaseClinicServiceAdd_Priority {
 	 firstPositin.firstClinicService(driver);
 	 Thread.sleep(2000);
 	  
-	  Assert.assertEquals(positionServic, ServiceNameAdded2);
 
 
 	 

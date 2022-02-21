@@ -5,8 +5,10 @@ import org.testng.annotations.Test;
 import cispackage.DataProviders;
 import cispackage.element_Highlight;
 import pageObject.PageObgectLogin;
+import pageObject.PageObgect_AddTrapistService;
 import pageObject.PageObgect_AddTrapistToClinic;
 import pageObject.PageObject_AddPatient;
+import pageObject.PageObject_Admit;
 import pageObject.PageObject_Landing;
 import pageObject.PageObject_ListPatient;
 import pageObject.PageObject_MainMenu;
@@ -67,23 +69,8 @@ public class TestCaseTrapistServiceAdd_Priority {
 	  Thread.sleep(2000);
 	  //priority in ClinicService page
 	 priority.TrapistServicePriority(driver);
-	 return ServiceNameAdded2;
-
-	  //go to Admit page
-	 menu.Admit(driver);
-	  Thread.sleep(3000);
-	 for(String window : driver.getWindowHandles() ) {
-	  driver.switchTo().window(window);
-	  }
-	//priority in Admit page
-	 PageObject_Admit firstPositin = PageFactory.initElements(driver, PageObject_Admit.class);
-	 firstPositin.firstClinicService(driver);
-	 Thread.sleep(2000);
-	  
-	  Assert.assertEquals(positionServic, ServiceNameAdded2);
 
 
-	 
 	 }
   
   @BeforeMethod

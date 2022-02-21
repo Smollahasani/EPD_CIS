@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -73,6 +74,14 @@ public class PageObgect_AddTrapistService{
     
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[1]/div[1]/div/div[2]")
 	WebElement refreshButton;
+    
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[1]/span")
+	WebElement addedService;
+    
+    @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[2]/span")
+	WebElement addedService2;
+    
+
 
     
 
@@ -85,8 +94,13 @@ public class PageObgect_AddTrapistService{
 		Actions action = new Actions(driver);
     	element_Highlight eh= new element_Highlight();
     	
-    	
+	    //search trapist
+
+		eh.highlightElement(driver, trapistSearchButtom);
+		action.click(trapistSearchButtom).perform();
+		eh.unhighlightLast(driver, trapistSearchButtom);
 	    //choose trapist
+
     	eh.highlightElement(driver, trapistCheckbox);
     	action.click(trapistCheckbox).perform();
 		eh.unhighlightLast(driver, trapistCheckbox);
@@ -126,50 +140,64 @@ public class PageObgect_AddTrapistService{
 	    //SuccecfulAddMessage
 	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
-	    Thread.sleep(1000);
+	    Thread.sleep(500);
 	    String c= POPUP.getText();
 	    System.out.print("resulte:"+c);
-	    Assert.assertEquals(c,"Ø«Ø¨Øª Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø§Ù†Ø¬Ø§Ù… Ø´Ø¯\n"
+	    Assert.assertEquals(c,"ثبت با موفقیت انجام شد\n"
 	    		+ "x");
 	    eh.unhighlightLast(driver, POPUP);
 
 	    
 	    //check sabt service
+
+		eh.highlightElement(driver, trapistSearchButtom);
+		action.click(trapistSearchButtom).perform();
+		eh.unhighlightLast(driver, trapistSearchButtom);
+
     	action.click(trapistCheckbox).perform();
 		Thread.sleep(1000);
-        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div/div[2]/div[2]/div/div[1]/div/div/div/div/span"));
+        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[1]/span"));
 	    eh.highlightElement(driver, addedService);
 		Thread.sleep(1000);
         ServiceNameAdded=addedService.getText();
         Assert.assertTrue(ServiceNameAdded.contains(ServiceName));
 	    //check sabt service2
 		Thread.sleep(1000);
-        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
-	    eh.highlightElement(driver, addedService);
+       WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[2]/span"));
+	    eh.highlightElement(driver, addedService2);
 		Thread.sleep(1000);
-        ServiceNameAdded2=addedService.getText();
+        ServiceNameAdded2=addedService2.getText();
         Assert.assertTrue(ServiceNameAdded2.contains(ServiceName2));
         action.click(refreshButton).perform();
 	}
     
     public void TrapistServicePriority ( WebDriver driver ) throws InterruptedException {
-    	
 		Actions action = new Actions(driver);
+
+	    //search trapist
+
+		eh.highlightElement(driver, trapistSearchButtom);
+		action.click(trapistSearchButtom).perform();
+		eh.unhighlightLast(driver, trapistSearchButtom);
+
+    	
     	element_Highlight eh= new element_Highlight();
     	//get service name in position 2
     	action.click(trapistCheckbox).perform();
 		Thread.sleep(1000);
-        WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/span"));
-	    eh.highlightElement(driver, addedService);
+	    WebElement addedService2=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[2]/span"));
+	    eh.highlightElement(driver, addedService2);
         ServiceNameAdded2=addedService2.getText();
         //move service to position 1
-         actions
-		.moveToElement(addedService2)
-		.clickAndHold()
-		.moveByOffset(130, 0)
-		.release()
-		.perform();
+        Actions builder = new Actions(driver);
+        Action dragAndDrop = builder.clickAndHold(addedService2)
+       .moveToElement(addedService)
+       .release(addedService)
+       .build();
+       //Performing the drag and drop action
+         dragAndDrop.perform();
          //sabt changes
+ 		Thread.sleep(1000);
      	eh.highlightElement(driver, sabtButton);
      	sabtButton.click();
  	    eh.unhighlightLast(driver, sabtButton);
@@ -177,11 +205,10 @@ public class PageObgect_AddTrapistService{
  	   //check Priority 
     	action.click(trapistCheckbox).perform();
 		Thread.sleep(1000);
-        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]/span"));
+        WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[1]/span"));
 	    eh.highlightElement(driver, addedService);
         ServiceNameAdded=addedService.getText();
         Assert.assertEquals(ServiceNameAdded2, ServiceNameAdded);
-        return ServiceNameAdded2;
 
   	
     }

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -149,13 +150,15 @@ public class PageObgect_AddClinicService{
         ServiceNameAdded2=addedService2.getText();
         //move service to position 1
         System.out.println("location x:" + addedService.getLocation().getX() + "location y:" + addedService.getLocation().getY());
-        action
-		.clickAndHold(addedService2)
-		.moveToElement(refreshButton)
-		.release()
-		.perform();
- 	    Thread.sleep(5000);
-         //sabt changes
+        Actions builder = new Actions(driver);
+
+      //Building a drag and drop action
+       Action dragAndDrop = builder.clickAndHold(addedService2)
+      .moveToElement(addedService)
+      .release(addedService)
+      .build();
+         //Performing the drag and drop action
+       dragAndDrop.perform();
      	eh.highlightElement(driver, sabtButton);
      	sabtButton.click();
  	    eh.unhighlightLast(driver, sabtButton);

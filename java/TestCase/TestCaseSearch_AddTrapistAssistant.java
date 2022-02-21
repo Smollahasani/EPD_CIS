@@ -8,6 +8,7 @@ import pageObject.PageObgectLogin;
 import pageObject.PageObgect_AddClinicToTrapist;
 import pageObject.PageObgect_AddTrapistToClinic;
 import pageObject.PageObject_AddPatient;
+import pageObject.PageObject_AddTrapistAssistsnt;
 import pageObject.PageObject_Landing;
 import pageObject.PageObject_ListPatient;
 import pageObject.PageObject_MainMenu;
