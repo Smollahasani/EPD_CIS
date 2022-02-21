@@ -21,7 +21,14 @@ public class PageObject_AddTrapistAssistsnt{
 	String  AssistantNameAdded;
 	String  AssistantNameAdded2;
 	String  AssistantNameAdded3;
-
+	String  TrapistName;
+	String  TrapistFirstName;
+	String  TrapistLastName;
+	String  TrapistCodeWithTitle;
+	String  TrapistCode;
+	String  AssistantNameSRC;
+	String  AssistantFirstName;
+	String  AssistantLastName;
 
 
     @FindBy(xpath="/html/body/app-root/div/app-cis-layout/app-therapist-assistant/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div/div[1]/mat-checkbox/label/div")
@@ -186,6 +193,145 @@ public class PageObject_AddTrapistAssistsnt{
         action.click(refreshButton).perform();
 	}
     
+
+    public void Search_three_letter_trapist ( WebDriver driver ) throws InterruptedException {
+		Actions action = new Actions(driver);
+  	element_Highlight eh= new element_Highlight();
+
+  	 
+  	//get name
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+  	    eh.highlightElement(driver, trapistName);
+		Thread.sleep(1000);
+     	TrapistName= trapistName.getText();
+		Thread.sleep(500);
+		eh.unhighlightLast(driver, trapistName);
+		action.click(trapistRefreshButton);
+		
+		 //split trapist name
+		String substrings[] = TrapistName.split(" "); 
+		
+		TrapistFirstName=substrings[0];
+		TrapistLastName=substrings[1];
+		
+ 	    //search name
+		String threeN = TrapistFirstName.substring(0, 2);
+		action.click(trapistNameSearch).perform();
+		action.sendKeys(threeN).perform();
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistName.contains(TrapistFirstName));
+		trapistNameSearch.clear();
+		action.click(trapistRefreshButton).perform();
+		Thread.sleep(1000);
+
+		
+		//search Family
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+		Thread.sleep(1000);
+	    threeN = TrapistLastName.substring(0, 2);
+		action.click(trapistFamilySearch).perform();
+		action.sendKeys(threeN).perform();
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistName.contains(TrapistLastName));
+		action.click(trapistRefreshButton).perform();
+
+	
+   } 
+    
+        public void Search_trapist_code ( WebDriver driver ) throws InterruptedException {
+		Actions action = new Actions(driver);
+  	    element_Highlight eh= new element_Highlight();
+  	
+  	    //get Code
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+  	    eh.highlightElement(driver, trapistCode);
+		Thread.sleep(1000);
+  	    TrapistCodeWithTitle= trapistCode.getText();
+		eh.unhighlightLast(driver, trapistCode);
+		
+	    //split trapist code
+		String substrings[] = TrapistCodeWithTitle.split(" "); 
+		TrapistCode=substrings[2];
+		
+ 	    //search code
+		eh.highlightElement(driver, trapistCodeSearch);
+		action.click(trapistCodeSearch).perform();
+		action.sendKeys(TrapistCode).perform();
+		Thread.sleep(1000);
+		eh.unhighlightLast(driver, trapistCodeSearch);
+		eh.highlightElement(driver, trapistsearchButton);
+		action.click(trapistsearchButton).perform();
+		eh.unhighlightLast(driver, trapistsearchButton);
+		Thread.sleep(1000);
+		Assert.assertTrue(TrapistCodeWithTitle.contains(TrapistCode));
+		trapistNameSearch.clear();
+		  	
+    }
+        public void Search_three_letter_assistant ( WebDriver driver ) throws InterruptedException {
+        	
+    		Actions action = new Actions(driver);
+    	  	element_Highlight eh= new element_Highlight();
+
+    	  	 
+    	  	//get name
+    			eh.highlightElement(driver, assistsntsearchButton);
+    			action.click(assistsntsearchButton).perform();
+    			eh.unhighlightLast(driver, assistsntsearchButton);
+    	  	    eh.highlightElement(driver, assistantName);
+    			Thread.sleep(1000);
+    			AssistantNameSRC= assistantName.getText();
+    			Thread.sleep(500);
+    			eh.unhighlightLast(driver, assistantName);
+    			action.click(trapistRefreshButton);
+    			
+    			 //split trapist name
+    			String substrings[] = AssistantNameSRC.split(" "); 
+    			
+    			AssistantFirstName=substrings[0];
+    			AssistantLastName=substrings[1];
+    			
+    	 	    //search name
+    			String threeN = AssistantFirstName.substring(0, 2);
+    			action.click(assistantNameSearch).perform();
+    			action.sendKeys(threeN).perform();
+    			eh.highlightElement(driver, assistsntsearchButton);
+    			action.click(assistsntsearchButton).perform();
+    			eh.unhighlightLast(driver, assistsntsearchButton);
+    			Thread.sleep(1000);
+    			Assert.assertTrue(AssistantNameSRC.contains(AssistantFirstName));
+    			trapistNameSearch.clear();
+    			action.click(assistantRefreshButton).perform();
+    			Thread.sleep(1000);
+
+    			
+    			//search Family
+    			eh.highlightElement(driver, assistsntsearchButton);
+    			action.click(assistsntsearchButton).perform();
+    			eh.unhighlightLast(driver, assistsntsearchButton);
+    			Thread.sleep(1000);
+    		    threeN = AssistantLastName.substring(0, 2);
+    			action.click(assistantFamilySearch).perform();
+    			action.sendKeys(threeN).perform();
+    			eh.highlightElement(driver, assistsntsearchButton);
+    			action.click(assistsntsearchButton).perform();
+    			eh.unhighlightLast(driver, assistsntsearchButton);
+    			Thread.sleep(1000);
+    			Assert.assertTrue(AssistantNameSRC.contains(AssistantLastName));
+    			action.click(assistantRefreshButton).perform();
+
+        }
       
 }
 
