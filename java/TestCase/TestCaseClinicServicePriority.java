@@ -66,7 +66,7 @@ public class TestCaseClinicServicePriority {
 	  }
 	   //AddClinicToService
 	 PageObgect_AddClinicService addClinicToService = PageFactory.initElements(driver, PageObgect_AddClinicService.class);
-	// addClinicToService.AddServicToClinic(driver);
+	 addClinicToService.AddServicToClinic(driver);
 	 //Clinic service priority
 	 addClinicToService.ClinicServicePriority(driver);
 	   }

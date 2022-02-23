@@ -110,9 +110,9 @@ public class PageObgect_AddClinicService{
     	sabtButton.click();
 	    eh.unhighlightLast(driver, sabtButton);
 	    //SuccecfulAddMessage
-	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
+	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
-	    Thread.sleep(500);
+	    Thread.sleep(1000);
 	    String c= POPUP.getText();
 	    System.out.print("resulte:"+c);
 	    Assert.assertEquals(c,"ثبت با موفقیت انجام شد\n"
@@ -139,6 +139,7 @@ public class PageObgect_AddClinicService{
 	}
     
     public void ClinicServicePriority ( WebDriver driver ) throws InterruptedException {
+    	
     	
 		Actions action = new Actions(driver);
     	element_Highlight eh= new element_Highlight();

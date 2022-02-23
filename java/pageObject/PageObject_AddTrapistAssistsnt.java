@@ -159,13 +159,14 @@ public class PageObject_AddTrapistAssistsnt{
     	sabtButton.click();
 	    eh.unhighlightLast(driver, sabtButton);
 	    //SuccecfulAddMessage
-	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
+	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
 	    Thread.sleep(1000);
 	    String c= POPUP.getText();
 	    System.out.print("resulte:"+c);
-	    Assert.assertEquals(c,"Ø«Ø¨Øª Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø§Ù†Ø¬Ø§Ù… Ø´Ø¯\n"
+	    Assert.assertEquals(c,"ثبت با موفقیت انجام شد\n"
 	    		+ "x");
+
 	    eh.unhighlightLast(driver, POPUP);
 
 	    

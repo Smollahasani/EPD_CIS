@@ -96,7 +96,7 @@ public class PageObgect_AddTrapistToClinic{
     	sabtBtton.click();
 	    eh.unhighlightLast(driver, sabtBtton);
 	    //SuccecfulAddMessage
-	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
+	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
 	    Thread.sleep(1000);
 	    String c= POPUP.getText();

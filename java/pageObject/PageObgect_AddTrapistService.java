@@ -137,8 +137,9 @@ public class PageObgect_AddTrapistService{
     	eh.highlightElement(driver, sabtButton);
     	sabtButton.click();
 	    eh.unhighlightLast(driver, sabtButton);
+	    Thread.sleep(500);
 	    //SuccecfulAddMessage
-	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/snack-bar-container/simple-snack-bar"));
+	    WebElement POPUP= driver.findElement(By.xpath("/html/body/div[2]/div/div/snack-bar-container/simple-snack-bar"));
 	    eh.highlightElement(driver, POPUP);
 	    Thread.sleep(500);
 	    String c= POPUP.getText();
@@ -155,7 +156,7 @@ public class PageObgect_AddTrapistService{
 		eh.unhighlightLast(driver, trapistSearchButtom);
 
     	action.click(trapistCheckbox).perform();
-		Thread.sleep(1000);
+		Thread.sleep(1500);
         WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[1]/span"));
 	    eh.highlightElement(driver, addedService);
 		Thread.sleep(1000);

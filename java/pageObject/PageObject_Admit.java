@@ -429,7 +429,7 @@ public class PageObject_Admit {
   	      Assert.assertEquals(c, "Ù¾Ø±ÙˆÙ†Ø¯Ù‡ Ø¨ÛŒÙ…Ø§Ø± Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÛŒØª Ø«Ø¨Øª Ø´Ø¯.\n"
   	      		+ "x");
         	    } 
-        public void firstClinicService () throws InterruptedException {
+        public void firstClinicService (WebDriver driver) throws InterruptedException {
        	
 			 Actions action = new Actions(driver);
 			 
