@@ -204,12 +204,16 @@ public class PageObgect_AddTrapistService{
  	    eh.unhighlightLast(driver, sabtButton);
 		Thread.sleep(1000);
  	   //check Priority 
+		eh.highlightElement(driver, trapistSearchButtom);
+		action.click(trapistSearchButtom).perform();
+		eh.unhighlightLast(driver, trapistSearchButtom);
     	action.click(trapistCheckbox).perform();
 		Thread.sleep(1000);
         WebElement addedService=driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-therapist-service/div/div/div[2]/app-therapist-single/div[2]/div[2]/div/div[1]/div[2]/div/div[1]/span"));
 	    eh.highlightElement(driver, addedService);
         ServiceNameAdded=addedService.getText();
         Assert.assertEquals(ServiceNameAdded2, ServiceNameAdded);
+	    eh.highlightElement(driver, addedService2);
 
   	
     }
