@@ -60,8 +60,16 @@ public class TestCaseAddPatientForeign {
 	  driver.switchTo().window(window);
 	  }
 	 
-    driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-add-patient/form/div[2]/div[2]/div[1]/div[2]/div[5]/kendo-combobox/span/kendo-searchbar/input")).sendKeys(Meliat);
-    driver.findElement(By.name("PassportNumber")).sendKeys(Passport);
+	WebElement meliat= driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-add-patient/form/div[2]/div[2]/div[1]/div[2]/div[5]/kendo-combobox/span/kendo-searchbar/input"));
+	meliat.click();
+	meliat.clear();
+	Thread.sleep(500);
+	meliat.click();
+	meliat.sendKeys(Meliat);
+	meliat.sendKeys(Keys.ENTER);
+	Thread.sleep(1000);
+	WebElement passport= driver.findElement(By.name("PassportNumber"));
+	passport.sendKeys(Passport);
 		 
  
 	 //AddPatient
@@ -96,7 +104,7 @@ public class TestCaseAddPatientForeign {
   }
 	   @AfterMethod
   public void afterMethod() {
-		driver.quit();
+		//driver.quit();
 	  
   }
 

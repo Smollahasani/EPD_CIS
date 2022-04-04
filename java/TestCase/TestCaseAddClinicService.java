@@ -27,11 +27,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
 public class TestCaseAddClinicService {
-      String nationalCode;
 
       
       WebDriver driver;
-	element_Highlight eh= new element_Highlight();
 
 
   @Test(dataProvider="Login",dataProviderClass=DataProviders.class)
