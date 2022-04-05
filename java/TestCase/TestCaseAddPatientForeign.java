@@ -11,6 +11,8 @@ import pageObject.PageObject_ListPatient;
 import pageObject.PageObject_MainMenu;
 
 import org.testng.annotations.BeforeMethod;
+
+import java.awt.Desktop.Action;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -60,17 +62,22 @@ public class TestCaseAddPatientForeign {
 	  driver.switchTo().window(window);
 	  }
 	 
+	 Actions action = new Actions(driver);
+
 	WebElement meliat= driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-add-patient/form/div[2]/div[2]/div[1]/div[2]/div[5]/kendo-combobox/span/kendo-searchbar/input"));
 	meliat.click();
 	meliat.clear();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 	meliat.click();
-	meliat.sendKeys(Meliat);
-	meliat.sendKeys(Keys.ENTER);
+	Thread.sleep(500);
+	action
+	.sendKeys(meliat, Meliat)
+	.perform();
 	Thread.sleep(1000);
 	WebElement passport= driver.findElement(By.name("PassportNumber"));
 	passport.sendKeys(Passport);
-		 
+	Thread.sleep(1000);
+
  
 	 //AddPatient
       PageObject_AddPatient sick = PageFactory.initElements(driver, PageObject_AddPatient.class);
