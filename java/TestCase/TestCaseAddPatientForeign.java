@@ -91,7 +91,7 @@ public class TestCaseAddPatientForeign {
 	  }
 	  //CheckAddPatient
       PageObject_ListPatient CheckAdd = PageFactory.initElements(driver, PageObject_ListPatient.class);
-      CheckAdd.Search_Patient_melicode(driver, Passport);
+      CheckAdd.Search_Patient_Passport(driver, Meliat, Passport);
       
       WebElement Gridmelicode=  driver.findElement(By.xpath("/html/body/app-root/div/app-cis-layout/app-patient-list/div/app-patient-search/div[2]/div/kendo-grid/div/kendo-grid-list/div/div[1]/table/tbody/tr/td[2]"));
       Thread.sleep(2000);
@@ -104,7 +104,7 @@ public class TestCaseAddPatientForeign {
   }
   @BeforeMethod
   public void beforeMethod() throws InterruptedException {
-	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\s.mollahasani\\webdriver\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
 	  driver = new ChromeDriver();
 	  
 	  	
