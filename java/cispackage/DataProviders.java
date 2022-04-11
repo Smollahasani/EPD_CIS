@@ -16,7 +16,7 @@ public class DataProviders {
 	@DataProvider(name = "Login")
 	public Iterator<Object[]> Login () throws IOException{
 		CSVReader reader = new CSVReader(
-				new FileReader("C:\\Users\\s.mollahasani\\EPD\\CIS\\src\\test\\resources\\data\\CSVFile\\Login.csv"),',','\'',1);
+				new FileReader("C:\\Users\\Samane\\seleniumWebDriver3\\seleniumeWebdriver-maven\\src\\test\\EPD_CIS\\resources\\data\\CSVFile\\Login.csv"),',','\'',1);
 		List<Object[]> myEntries = new ArrayList<Object[]>();
 		String[] nextLine;
 		while ((nextLine=reader.readNext())!=null) {
@@ -44,7 +44,7 @@ public class DataProviders {
 	@DataProvider(name = "AddPationesForeign")
 	public Iterator<Object[]> AddPationesForeign() throws IOException{
 		CSVReader reader = new CSVReader(
-				new FileReader("C:\\Users\\s.mollahasani\\EPD\\CIS\\src\\test\\resources\\data\\CSVFile\\AddPationesForeign.csv"),',','\'',1);
+				new FileReader("C:\\Users\\Samane\\seleniumWebDriver3\\seleniumeWebdriver-maven\\src\\test\\EPD_CIS\\resources\\data\\CSVFile\\AddPationesForeign.csv"),',','\'',1);
 		List<Object[]> myEntries = new ArrayList<Object[]>();
 		String[] nextLine;
 		while ((nextLine=reader.readNext())!=null) {
